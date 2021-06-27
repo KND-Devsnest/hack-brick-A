@@ -1,4 +1,4 @@
-const colors = ["#fff", "#ff1", "#12f", "#45F", "#ff66ff"];
+const colors = ["#fff", "#ff1", "#12f", "#45F", "#ff66ff", "#cc66ff"];
 class levelBrick {
   constructor(
     x,
@@ -22,6 +22,7 @@ class levelBrick {
   }
   render(ctx) {
     ctx.fillStyle = colors[this.health];
+    
     ctx.strokeStyle = "red";
     ctx.rect(this.x, this.y, this.width, this.height);
     ctx.fillRect(this.x, this.y, this.width, this.height);
