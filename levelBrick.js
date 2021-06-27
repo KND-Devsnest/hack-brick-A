@@ -5,7 +5,6 @@ class levelBrick {
     y,
 
     health = 1,
-    color = "red",
     type = "level1",
     width = Math.floor(canvas.width / 10),
     height = 40
@@ -14,19 +13,23 @@ class levelBrick {
     this.y = y;
     this.width = width;
     this.height = height;
-    this.color = color;
     this.img = new Image();
     this.type = type;
     this.health = health;
     this.img.src = images[this.type];
   }
   render(ctx) {
-    ctx.fillStyle = colors[this.health];
-    
-    ctx.strokeStyle = "red";
-    ctx.rect(this.x, this.y, this.width, this.height);
-    ctx.fillRect(this.x, this.y, this.width, this.height);
-    ctx.stroke();
+    if (this.type === "powerup") {
+      this.img.src = images["powerup"];
+      ctx.drawImage(this.img, this.x, this.y, this.height, this.height);
+    } else {
+      ctx.fillStyle = colors[this.health];
+
+      ctx.strokeStyle = "red";
+      ctx.rect(this.x, this.y, this.width, this.height);
+      ctx.fillRect(this.x, this.y, this.width, this.height);
+      ctx.stroke();
+    }
   }
   collisions(ball) {
     if (

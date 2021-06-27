@@ -16,7 +16,8 @@ let paddle = new Paddle(Math.floor(canvas.width / 8), 10, ctx, canvas, "black");
 let bricks = [];
 function loadLevel() {
   levels[currentlevel].forEach((level) => {
-    let temp = new levelBrick(level.x, level.y, level.health);
+    console.log(level.type);
+    let temp = new levelBrick(level.x, level.y, level.health, level.type);
     bricks.push(temp);
   });
 }
@@ -59,7 +60,7 @@ function draw() {
     if (bricks[i].health >= 0) {
       bricks[i].render(ctx);
       if (bricks[i].collisions(ball)) {
-        if (bricks[i].health === 4) {
+        if (bricks[i].type === "powerup") {
           let tempPowerup = new Powerup(10, bricks[i]);
           activePowerups.push(tempPowerup);
         }
