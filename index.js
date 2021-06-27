@@ -7,7 +7,7 @@ pos = Math.floor(canvas.width / 2);
 ctx = canvas.getContext("2d");
 let ball = new Ball(10, "red");
 ctx.font = "20px Georgia";
-let paddle = new Paddle(60, 10, ctx, canvas);
+let paddle = new Paddle(60, 10, ctx, canvas, "black");
 let bricks = [];
 for (let i = 0; i < 100; i += 10) {
   let temp = new levelBrick(200, 100 + i, 10, 10, "red");

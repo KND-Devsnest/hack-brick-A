@@ -1,5 +1,5 @@
 class Paddle {
-  constructor(width, height, ctx, canvas) {
+  constructor(width, height, ctx, colour = "black") {
     this.width = width;
     this.height = height;
     this.ctx = ctx;
@@ -8,7 +8,7 @@ class Paddle {
     this.x = Math.floor(canvas.width / 2);
     this.y = canvas.height - 10;
 
-    ctx.fillStyle = "black";
+    this.colour = colour;
   }
 
   render(pos) {
@@ -21,6 +21,7 @@ class Paddle {
       pos = canvas.width - this.width;
       this.x = pos;
     }
+
     this.ctx.fillRect(this.x, this.y, this.width, this.height); // create rectangle
     this.ctx.fill();
   }
