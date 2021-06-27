@@ -20,6 +20,39 @@
         <a href="#">upgrade your browser</a> to improve your experience.
       </p>
     <![endif]-->
+    <main>
+      <div class="header">
+        <div class="img">
+          <img
+            id="volOff"
+            class="vol hidden"
+            src="./imgs/volumeOff.svg"
+            onclick="toggleVol()"
+          />
+          <img
+            id="volOn"
+            class="vol"
+            src="./imgs/volumeOn.svg"
+            onclick="toggleVol()"
+          />
+        </div>
+        <div class="title">Gold Digger</div>
+        <div class="levels"></div>
+      </div>
+      <div class="content">
+        <div class="left-col">
+          <div class="gif-container"></div>
+        </div>
+        <div class="right-col">
+          <div class="gender-emoji"><span class="emoji" id="manSelect">👷‍♂️</span><span class="emoji" id="womanSelect">👷‍♀️</span></div>
+          <input name="name" type="text" />
+          <div class="play-btn">
+            <img />
+            <span>PLAY</span>
+          </div>
+        </div>
+      </div>
+    </main>
     <canvas id="main" width="500" height="500">
       Oh, Sorry! You can't play in this browser because, this browser doesn't support HTML5 Canvas! 🙁
     </canvas>
@@ -27,5 +60,6 @@
     <script src="levelBrick.js"></script>
     <script src="Paddle.js"></script>
     <script src="index.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
