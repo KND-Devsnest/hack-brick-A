@@ -1,14 +1,14 @@
-const level1 = [];
+const levels = { level1: [], level2: [], level3: [], level4: [], level5: [] };
 temp = 0;
 for (let i = 0; i < 5; i += 1) {
   for (
     let j = 0;
     j < window.innerWidth;
-    j += Math.floor(window.innerWidth / 10)
+    j += Math.floor(window.innerWidth / 9)
   ) {
-    level1.push({ x: j, y: temp, health: Math.ceil(Math.random() * 4) });
+    levels.level1.push({ x: j, y: temp, health: 0 });
   }
-  temp += 41;
+  temp += 45;
 }
 
 // Helper for pushing into a level array

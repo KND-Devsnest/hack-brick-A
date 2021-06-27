@@ -1,5 +1,6 @@
 let score = 0;
 let lives = 3;
+let currentlevel = "level1";
 // const background = new Image();
 // background.src = images["bg"];
 const canvas = document.getElementById("main");
@@ -12,10 +13,13 @@ let ball = new Ball(Math.floor(canvas.width / 64), "red");
 ctx.font = "20px Georgia";
 let paddle = new Paddle(Math.floor(canvas.width / 8), 10, ctx, canvas, "black");
 let bricks = [];
-level1.forEach((level) => {
-  let temp = new levelBrick(level.x, level.y, level.health);
-  bricks.push(temp);
-});
+function loadLevel() {
+  levels[currentlevel].forEach((level) => {
+    let temp = new levelBrick(level.x, level.y, level.health);
+    bricks.push(temp);
+  });
+}
+loadLevel();
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   console.log("hello");
@@ -53,6 +57,7 @@ function draw() {
     lives -= 1;
     if (lives == -1) {
       clearInterval(engine);
+      gameOver();
       return 0;
     }
 
@@ -68,3 +73,4 @@ let engine = setInterval(() => {
 document.addEventListener("mousemove", (e) => {
   pos = e.clientX;
 });
+function gameOver() {}
