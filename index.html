@@ -44,23 +44,24 @@
           <div class="gif-container"></div>
         </div>
         <div class="right-col">
-          <div class="gender-emoji"><span class="emoji" id="manSelect">👷‍♂️</span><span class="emoji" id="womanSelect">👷‍♀️</span></div>
-          <input name="name" type="text" placeholder="CoolDigger1996"/>
-          <div class="play-btn">
-            <img />
-            <div class="play" ><img src="./imgs/play.svg">
-            <span>PLAY</span></div>
+          <div class="gender-emoji"><span class="emoji selected" id="manSelect" onclick="selectGender('male')">👷‍♂️</span><span class="emoji" onclick="selectGender('female')" id="womanSelect">👷‍♀️</span></div>
+          <input id="playerNameInput" name="name" type="text" placeholder="CoolDigger2608"/>
+          <div class="play" onclick="startGame()">
+            <img src="./imgs/play.svg">
+            <span>PLAY</span>
           </div>
         </div>
       </div>
+      <div id="canvas-container" style="display: none;">
+        <canvas id="main" width="500" height="500">
+          Oh, Sorry! You can't play in this browser because, this browser doesn't support HTML5 Canvas! 🙁
+        </canvas>
+      </div>
     </main>
-    <canvas id="main" width="500" height="500">
-      Oh, Sorry! You can't play in this browser because, this browser doesn't support HTML5 Canvas! 🙁
-    </canvas>
     <script src="ball.js"></script>
     <script src="levelBrick.js"></script>
     <script src="Paddle.js"></script>
-    <script src="index.js"></script>
     <script src="main.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
