@@ -4,8 +4,8 @@ class Ball {
     colour,
     startPosX = Math.floor(canvas.width / 2 + 10),
     startPosY = canvas.height - 50,
-    xSpeed = 1,
-    ySpeed = 2.8
+    xSpeed = -0.5,
+    ySpeed = -1
   ) {
     this.radius = radius;
     this.colour = colour;
@@ -18,7 +18,7 @@ class Ball {
     this.x += this.xSpeed;
     this.y += this.ySpeed;
     ctx.beginPath();
-    ctx.arc(this.x, this.y, 13, 0, 2 * Math.PI);
+    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
     ctx.fill();
   }
   changeDirection(paddle, pos) {
@@ -32,10 +32,11 @@ class Ball {
       this.ySpeed = this.ySpeed * -1;
     }
     if (
-      this.x + this.radius >= pos &&
-      this.x - this.radius <= pos + paddle.width &&
-      this.y + this.radius >= paddle.y &&
-      this.y + this.radius <= paddle.y + 10
+      this.y < paddle.y &&
+      this.y > paddle.y - this.radius &&
+      this.x > paddle.x - this.radius &&
+      this.x < paddle.x + paddle.width + this.radius &&
+      this.ySpeed > 0
     ) {
       this.ySpeed = this.ySpeed * -1;
     }

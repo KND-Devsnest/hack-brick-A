@@ -1,10 +1,7 @@
-let x = 100;
-let y = 100;
-let xspeed = 1;
-let yspeed = 2.8;
 let score = 0;
 let lives = 3;
-
+const background = new Image();
+background.src = images["bg"];
 const canvas = document.getElementById("main");
 pos = Math.floor(canvas.width / 2);
 ctx = canvas.getContext("2d");
@@ -13,12 +10,13 @@ ctx.font = "20px Georgia";
 let paddle = new Paddle(60, 10, ctx, canvas);
 let bricks = [];
 for (let i = 0; i < 100; i += 10) {
-  let temp = new levelBrick(200, 100 + i, 100, 10, "red");
+  let temp = new levelBrick(200, 100 + i, 10, 10, "red");
   bricks.push(temp);
 }
 
 function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(background, 0, 0, 500, 500);
   paddle.render(pos);
   ball.render(ctx);
   ctx.fillText(`Score: ${score}`, canvas.width - 100, canvas.height - 20);
@@ -44,14 +42,14 @@ function draw() {
 
     ball = new Ball(10, "red");
     new Paddle(60, 10, ctx, canvas);
-    pos = math.floor(canvas.width / 2);
+    pos = Math.floor(canvas.width / 2);
   }
   console.log(lives);
 }
 var engine = setInterval(() => {
   draw();
-}, 20);
+}, 1);
 
-canvas.addEventListener("mousemove", (e) => {
+document.addEventListener("mousemove", (e) => {
   pos = e.clientX;
 });
