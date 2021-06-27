@@ -7,7 +7,7 @@ class levelBrick {
     health = 1,
     color = "red",
     type = "level1",
-    width = 60,
+    width = Math.floor(canvas.width / 10),
     height = 40
   ) {
     this.x = x;

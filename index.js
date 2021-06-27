@@ -3,16 +3,25 @@ let lives = 3;
 // const background = new Image();
 // background.src = images["bg"];
 const canvas = document.getElementById("main");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 pos = Math.floor(canvas.width / 2);
 ctx = canvas.getContext("2d");
-let ball = new Ball(10, "red");
+let ball = new Ball(Math.floor(canvas.width / 64), "red");
 
 ctx.font = "20px Georgia";
-let paddle = new Paddle(100, 10, ctx, canvas, "black");
+let paddle = new Paddle(Math.floor(canvas.width / 8), 10, ctx, canvas, "black");
 let bricks = [];
-levels.forEach((level) => {
+level1.forEach((level) => {
   let temp = new levelBrick(level.x, level.y, level.health);
   bricks.push(temp);
+});
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  console.log("hello");
+  canvas.height = window.innerHeight;
+  ball = new Ball(Math.floor(canvas.width / 64), "red");
+  paddle = new Paddle(Math.floor(canvas.width / 8), 10, ctx, canvas, "black");
 });
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -52,7 +61,7 @@ function draw() {
     pos = Math.floor(canvas.width / 2);
   }
 }
-var engine = setInterval(() => {
+let engine = setInterval(() => {
   draw();
 }, 1);
 
