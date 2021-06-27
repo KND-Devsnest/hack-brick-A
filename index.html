@@ -10,18 +10,8 @@
     <title></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-      }
-      #main {
-        border: 1px solid black;
-        cursor: none;
-      }
-    </style>
+    <link rel="stylesheet" href="./styles.css" />
+    
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -30,15 +20,51 @@
         <a href="#">upgrade your browser</a> to improve your experience.
       </p>
     <![endif]-->
-
-    <canvas id="main" width="640" height="480"></canvas>
-
+    <main>
+      <div class="header">
+        <div class="img">
+          <img
+            id="volOff"
+            class="vol hidden"
+            src="./imgs/volumeOff.svg"
+            onclick="toggleVol()"
+          />
+          <img
+            id="volOn"
+            class="vol"
+            src="./imgs/volumeOn.svg"
+            onclick="toggleVol()"
+          />
+        </div>
+        <div class="title">Gold Digger</div>
+        <div class="levels"></div>
+      </div>
+      <div class="content">
+        <div class="left-col">
+          <div class="gif-container"></div>
+        </div>
+        <div class="right-col">
+          <div class="gender-emoji"><span class="emoji selected" id="manSelect" onclick="selectGender('male')">👷‍♂️</span><span class="emoji" onclick="selectGender('female')" id="womanSelect">👷‍♀️</span></div>
+          <input id="playerNameInput" name="name" type="text" placeholder="CoolDigger2608"/>
+          <div class="play" onclick="startGame()">
+            <img src="./imgs/play.svg">
+            <span>PLAY</span>
+          </div>
+        </div>
+      </div>
+      <div id="canvas-container" style="display: none;">
+        <canvas id="main" width="640" height="480">
+          Oh, Sorry! You can't play in this browser because, this browser doesn't support HTML5 Canvas! 🙁
+        </canvas>
+      </div>
+    </main>
     <script src="environment.js"></script>
     <script src="ball.js"></script>
     <script src="levelBrick.js"></script>
-    <script src="Paddle.js"></script>
     <script src="levels.js"></script>
-    <script src = "powerups.js"></script>
+    <script src="powerups.js"></script>
+    <script src="Paddle.js"></script>
+    <script src="main.js"></script>
     <script src="index.js"></script>
   </body>
 </html>
