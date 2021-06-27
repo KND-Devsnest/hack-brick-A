@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* border: 1px solid black; */
   font-family: "Oswald", sans-serif;
 }
 
@@ -15,13 +14,14 @@ body {
 }
 
 main {
+    max-width: 1280px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80vw;
   height: 80vh;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 8px 4px 0 rgba(31, 38, 135, 0.2);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -64,22 +64,23 @@ main {
 
 .content {
     width: 100%;
-    min-height: 80%;
+    height: 80%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     /* border: 1px solid black; */
 }
 
-.left-col {
+/* .left-col {
+    width: 50%;
   position: relative;
-}
+} */
 
 .gif-container {
   margin: 0 auto;
-  width: 50vh;
-  height: 40vh;
+  width: 30vh;
+  height: 25vh;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 4px 0 rgba(31, 38, 135, 0.2);
   backdrop-filter: blur(8px);
@@ -95,17 +96,46 @@ main {
   align-items: center;
 }
 
-.gender-emoji .emoji {
+.gender-emoji {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
     font-size: 5rem;
 }
 
+.emoji {
+    width: 50%;
+    text-align: center;
+}
+
 .emoji:hover {
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 2);
+    text-underline-offset: 0.25em;
+    text-decoration-thickness: 0.03em;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 4px 0 rgba(31, 38, 135, 0.2);
+    /* background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 2px 0 rgba(31, 38, 135, 0.2);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border-radius: 10px;
+    border-radius: 5px; */
+}
+
+input[type=text]{
+    margin-top: .5em;
+    font-size: 1.5em;
+    color: white;
+    padding: .5em;
+    background: rgba(255, 255, 255, 0.1 );
+  box-shadow: 0 8px 4px 0 rgba(31, 38, 135, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+input[type=text]:focus {
+    background: rgba(255, 255, 255, 0.00);
 }
 
 @media only screen 
