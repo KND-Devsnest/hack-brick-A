@@ -22,7 +22,10 @@ class levelBrick {
   }
   render(ctx) {
     ctx.fillStyle = colors[this.health];
+    ctx.strokeStyle = "red";
+    ctx.rect(this.x, this.y, this.width, this.height);
     ctx.fillRect(this.x, this.y, this.width, this.height);
+    ctx.stroke();
   }
   collisions(ball) {
     if (
