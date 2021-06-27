@@ -7,8 +7,8 @@ class levelBrick {
     health = 1,
     color = "red",
     type = "level1",
-    width = 40,
-    height = 10
+    width = 60,
+    height = 40
   ) {
     this.x = x;
     this.y = y;

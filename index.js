@@ -1,7 +1,7 @@
 let score = 0;
 let lives = 3;
-const background = new Image();
-background.src = images["bg"];
+// const background = new Image();
+// background.src = images["bg"];
 const canvas = document.getElementById("main");
 pos = Math.floor(canvas.width / 2);
 ctx = canvas.getContext("2d");
