@@ -1,5 +1,15 @@
+const colors = ["#fff", "#ff1", "#12f", "#45F", "#ff66ff"];
 class levelBrick {
-  constructor(x, y, width, height, color, health = 1, type = "smol") {
+  constructor(
+    x,
+    y,
+
+    health = 1,
+    color = "red",
+    type = "level1",
+    width = 40,
+    height = 10
+  ) {
     this.x = x;
     this.y = y;
     this.width = width;
@@ -11,7 +21,8 @@ class levelBrick {
     this.img.src = images[this.type];
   }
   render(ctx) {
-    ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    ctx.fillStyle = colors[this.health];
+    ctx.fillRect(this.x, this.y, this.width, this.height);
   }
   collisions(ball) {
     if (

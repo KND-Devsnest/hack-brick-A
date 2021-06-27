@@ -17,11 +17,12 @@ class Ball {
   render(ctx) {
     this.x += this.xSpeed;
     this.y += this.ySpeed;
+    // ctx.fillText("😂", this.x, this.y);
     ctx.beginPath();
     ctx.fillStyle = this.colour;
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
     ctx.fill();
-    ctx.fillStyle = "black";
+    // ctx.fillStyle = "black";
   }
   changeDirection(paddle, pos) {
     if (

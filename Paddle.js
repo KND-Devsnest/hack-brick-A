@@ -6,12 +6,12 @@ class Paddle {
     this.canvas = canvas;
 
     this.x = Math.floor(canvas.width / 2);
-    this.y = canvas.height - 10;
+    this.y = canvas.height - 40;
 
     this.colour = colour;
   }
 
-  render(pos) {
+  render(pos, ctx) {
     // move paddle on mouse change -> access pos variable
     this.x = pos;
     if (pos < 0) {
@@ -21,8 +21,7 @@ class Paddle {
       pos = canvas.width - this.width;
       this.x = pos;
     }
-
-    this.ctx.fillRect(this.x, this.y, this.width, this.height); // create rectangle
-    this.ctx.fill();
+    ctx.fillStyle = "#FFF";
+    ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 }
