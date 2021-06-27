@@ -7,7 +7,17 @@ class levelBrick {
     this.color = color;
   }
   render(ctx) {
-    ctx.rect(x, y, width, height);
-    ctx.fill()
+    ctx.rect(this.x, this.y, this.width, this.height);
+    ctx.fill();
+  }
+  collisions(ball) {
+    if (
+      ball.y - ball.radius <= this.y + this.height &&
+      ball.y + ball.radius >= this.y &&
+      ball.x + ball.radius >= this.x &&
+      ball.x - ball.radius <= this.x + this.width
+    ) {
+      return true;
+    }
   }
 }
