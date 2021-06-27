@@ -15,10 +15,13 @@ class Ball {
     ctx.fill();
   }
   changeDirection() {
-    if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+    if (
+      this.x + this.radius > canvas.width - this.radius ||
+      this.x - this.radius < 0 + this.radius
+    ) {
       this.xSpeed = this.xSpeed * -1;
     }
-    if (this.y - this.radius < 0) {
+    if (this.y - this.radius < 0 + this.radius) {
       this.ySpeed = this.ySpeed * -1;
     }
     if (
