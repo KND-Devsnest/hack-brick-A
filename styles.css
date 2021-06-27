@@ -75,8 +75,28 @@ main {
 /* .left-col {
     width: 50%;
   position: relative;
-} */
+}*/
 
+.play{
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 2rem;
+  background-color: aliceblue;
+  width: 125px;
+  border-radius: 10px;
+  color: #301A6B;
+  
+
+}
+
+.play:hover{
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 4px 0 rgba(8, 26, 107, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  
+}
 .gif-container {
   margin: 0 auto;
   width: 30vh;
