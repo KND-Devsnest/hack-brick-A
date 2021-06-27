@@ -1,17 +1,35 @@
+const colors = ["#fff", "#ff1", "#12f", "#45F", "#ff66ff", "#cc66ff"];
 class levelBrick {
-  constructor(x, y, width, height, color, health = 1, type = "smol") {
+  constructor(
+    x,
+    y,
+
+    health = 1,
+    type = "level1",
+    width = Math.floor(canvas.width / 10),
+    height = 40
+  ) {
     this.x = x;
     this.y = y;
     this.width = width;
     this.height = height;
-    this.color = color;
     this.img = new Image();
     this.type = type;
     this.health = health;
     this.img.src = images[this.type];
   }
   render(ctx) {
-    ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    if (this.type === "powerup") {
+      this.img.src = images["powerup"];
+      ctx.drawImage(this.img, this.x, this.y, this.height, this.height);
+    } else {
+      ctx.fillStyle = colors[this.health];
+
+      ctx.strokeStyle = "red";
+      ctx.rect(this.x, this.y, this.width, this.height);
+      ctx.fillRect(this.x, this.y, this.width, this.height);
+      ctx.stroke();
+    }
   }
   collisions(ball) {
     if (

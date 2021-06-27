@@ -1,7 +1,7 @@
 class Ball {
   constructor(
     radius,
-    colour,
+    colour = "white",
     startPosX = Math.floor(canvas.width / 2 + 10),
     startPosY = canvas.height - 50,
     xSpeed = -0.5,
@@ -17,9 +17,12 @@ class Ball {
   render(ctx) {
     this.x += this.xSpeed;
     this.y += this.ySpeed;
+    // ctx.fillText("😂", this.x, this.y);
     ctx.beginPath();
+    ctx.fillStyle = this.colour;
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
     ctx.fill();
+    // ctx.fillStyle = "black";
   }
   changeDirection(paddle, pos) {
     if (
