@@ -36,6 +36,8 @@ function draw() {
   if (ball.changeDirection(paddle, pos)) {
     lives -= 1;
     if (lives == -1) {
+      alert("GAME OVER");
+      document.location.reload();
       clearInterval(engine);
       return 0;
     }
