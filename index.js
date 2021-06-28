@@ -112,14 +112,12 @@ function draw() {
       return 0;
     }
 
-    ball = new Ball(10, "red");
-    new Paddle(60, 10, ctx, canvas);
     pos = Math.floor(canvas.width / 2);
   }
 }
 
 document.addEventListener("mousemove", (e) => {
-  pos = e.clientX;
+  pos = e.offsetX;
 });
 function start() {
   init();
