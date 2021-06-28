@@ -5,8 +5,8 @@ let activePowerups = [];
 // const background = new Image();
 // background.src = images["bg"];
 const canvas = document.getElementById("main");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = 1024;
+canvas.height = 1024;
 pos = Math.floor(canvas.width / 2);
 ctx = canvas.getContext("2d");
 let ball = new Ball(Math.floor(canvas.width / 64), "red");
@@ -22,13 +22,13 @@ function loadLevel() {
   });
 }
 loadLevel();
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
+// window.addEventListener("resize", () => {
+//   canvas.width = window.innerWidth;
 
-  canvas.height = window.innerHeight;
-  ball = new Ball(Math.floor(canvas.width / 64), "red");
-  paddle = new Paddle(Math.floor(canvas.width / 8), 10, ctx, canvas, "black");
-});
+//   canvas.height = window.innerHeight;
+//   ball = new Ball(Math.floor(canvas.width / 64), "red");
+//   paddle = new Paddle(Math.floor(canvas.width / 8), 10, ctx, canvas, "black");
+// });
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "#111";
