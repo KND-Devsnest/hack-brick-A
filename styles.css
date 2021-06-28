@@ -10,7 +10,10 @@
 body {
   font-size: 16px;
   min-height: 100vh;
-  background-image: linear-gradient(to bottom left, #581c9f, #c8435e);
+  /* background-image: linear-gradient(to bottom left, #FCDF8A, #F38381); */
+  /* background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+ background-blend-mode: multiply,multiply; */
+ background-image: linear-gradient(to bottom left, #a1523c 0%, #774e2f 100%);
 }
 
 main {
@@ -56,6 +59,13 @@ main {
     color: white;
     font-weight: 500;
     font-size: 3rem;
+    text-transform: uppercase;
+}
+
+.restart-quit {
+  width: 10% !important;
+  font-size: 1em !important;
+  padding: 2px !important;
 }
 
 .hidden {
@@ -87,6 +97,11 @@ main {
   -webkit-backdrop-filter: blur(8px);
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.gif-container img {
+  width: 30em;
+  height: 25em;
 }
 
 .right-col {
@@ -173,8 +188,9 @@ input[type=text]:focus {
 }
 
 canvas {
+  background-color: #4d2e17;
   border: 1px solid black;
-  background: rgba(255, 255, 255, 0.1 );
+  /* background: rgba(255, 255, 255, 0.1 ); */
   box-shadow: 0 8px 4px 0 rgba(31, 38, 135, 0.2);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);

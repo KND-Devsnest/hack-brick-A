@@ -6,7 +6,7 @@ class Paddle {
     this.canvas = canvas;
 
     this.x = Math.floor(canvas.width / 2);
-    this.y = canvas.height - 40;
+    this.y = canvas.height - 50;
 
     this.colour = colour;
   }

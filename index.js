@@ -46,9 +46,9 @@ function init() {
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "#111";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "#fff";
+  // ctx.fillStyle = "#111";
+  // ctx.fillRect(0, 0, canvas.width, canvas.height);
+  // ctx.fillStyle = "#fff";
   // ctx.drawImage(background, 0, 0, 500, 500);
   paddle.render(pos, ctx);
   ball.render(ctx);
@@ -142,10 +142,11 @@ function start() {
   } else if (currentlevel === "gameOver") {
     gameOverSound.play();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#111";
+    ctx.fillStyle = "#FFF";
+    ctx.font = "36px Georgia";
     ctx.fillText(
-      "Game Over",
-      Math.floor(canvas.width / 2) - 40,
+      "Game Over!",
+      Math.floor(canvas.width / 2) - 95,
       Math.floor(canvas.height / 2)
     );
   } else {

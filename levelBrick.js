@@ -1,4 +1,4 @@
-const colors = ["#fff", "#ff1", "#12f", "#45F", "#ff66ff", "#cc66ff"];
+const colors = ["rgba(188, 74, 60, 0.1)", "rgba(188, 74, 60, 0.4)", "rgba(188, 74, 60, 0.6)", "rgba(188, 74, 60, 0.6)", "rgba(188, 74, 60, 1)", "rgba(188, 74, 60, 1)"];
 class levelBrick {
   constructor(
     x,
@@ -25,7 +25,7 @@ class levelBrick {
     } else {
       ctx.fillStyle = colors[this.health];
 
-      ctx.strokeStyle = "red";
+      ctx.strokeStyle = "#8C7572";
       ctx.rect(this.x, this.y, this.width, this.height);
       ctx.fillRect(this.x, this.y, this.width, this.height);
       ctx.stroke();
@@ -38,6 +38,7 @@ class levelBrick {
       ball.x + ball.radius >= this.x &&
       ball.x - ball.radius <= this.x + this.width
     ) {
+
       return true;
     }
   }
