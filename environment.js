@@ -40,13 +40,8 @@ const allPowerups = {
     isPowerActive = true;
   },
   extraLives: function () {
-    pointerToCurrentTimeout = setTimeout(() => {
-      ball.ySpeed *= 2;
-      isPowerActive = false;
-      console.log("executed error");
-    }, 15000);
-
-    ball.ySpeed *= 0.5;
-    isPowerActive = true;
+    if (lives < 5) {
+      lives += 1;
+    }
   },
 };
