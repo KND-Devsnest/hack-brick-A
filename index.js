@@ -11,8 +11,10 @@ let currentUsedPowerUpObject = null;
 const gameOverSound = new Audio("assets/gameover.wav");
 soundPoweredUp = new Audio("assets/powerup.wav");
 const canvas = document.getElementById("main");
-canvas.width = 640;
-canvas.height = 480;
+
+
+canvas.width = 1024;
+canvas.height = 1024;
 
 pos = Math.floor(canvas.width / 2);
 ctx = canvas.getContext("2d");
@@ -28,10 +30,14 @@ function loadLevel() {
     bricks.push(temp);
   });
 }
+
 function init() {
   paddle = new Paddle(Math.floor(canvas.width / 8), 10, ctx, canvas, "black");
   ball = new Ball(Math.floor(canvas.width / 64), "red");
 }
+
+loadLevel();
+
 // window.addEventListener("resize", () => {
 //   canvas.width = window.innerWidth;
 
@@ -39,7 +45,10 @@ function init() {
 //   ball = new Ball(Math.floor(canvas.width / 64), "red");
 //   paddle = new Paddle(Math.floor(canvas.width / 8), 10, ctx, canvas, "black");
 // });
+
 start();
+
+
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "#111";
