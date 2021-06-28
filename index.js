@@ -6,6 +6,7 @@ let isPowerActive = false;
 let powerNames = Object.keys(allPowerups);
 let engine = null;
 let currentUsedPowerUpObject = null;
+let muted = false;
 // const background = new Image();
 // background.src = images["bg"];
 const gameOverSound = new Audio("assets/gameover.wav");
@@ -14,9 +15,11 @@ const canvas = document.getElementById("main");
 canvas.width = 640;
 canvas.height = 480;
 
+const canvasBoundRect = canvas.getBoundingClientRect();
+
 pos = Math.floor(canvas.width / 2);
 ctx = canvas.getContext("2d");
-let ball = new Ball(Math.floor(canvas.width / 64), "red");
+let ball = new Ball(Math.floor(canvas.width / 64), muted, "red");
 
 ctx.font = "20px Georgia";
 let paddle = new Paddle(Math.floor(canvas.width / 8), 10, ctx, canvas, "black");
@@ -29,7 +32,7 @@ function loadLevel() {
 }
 function init() {
   paddle = new Paddle(Math.floor(canvas.width / 8), 10, ctx, canvas, "black");
-  ball = new Ball(Math.floor(canvas.width / 64), "red");
+  ball = new Ball(Math.floor(canvas.width / 64), muted, "red");
   activePowerups = [];
   isPowerActive = false;
 }
@@ -116,8 +119,8 @@ function draw() {
   }
 }
 
-document.addEventListener("mousemove", (e) => {
-  pos = e.offsetX;
+canvas.addEventListener("mousemove", (e) => {
+  pos = e.offsetX - canvasBoundRect.x;
 });
 function start() {
   init();
@@ -155,4 +158,12 @@ function start() {
       Math.floor(canvas.height / 2)
     );
   }
+}
+
+function toggleMute() {
+  muted = !muted;
+  gameOverSound.muted = !(gameOverSound.muted);
+  soundPoweredUp.muted = !(soundPoweredUp.muted);
+  ball.ballSound.muted = !(ball.ballSound.muted);
+  ball.isMuted = !(ball.isMuted);
 }
