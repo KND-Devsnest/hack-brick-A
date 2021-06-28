@@ -1,5 +1,5 @@
 let score = 0;
-let lives = 1;
+let lives = 2;
 let currentlevel = 1;
 let activePowerups = [];
 let isPowerActive = false;
@@ -23,7 +23,6 @@ let paddle = new Paddle(Math.floor(canvas.width / 8), 10, ctx, canvas, "black");
 let bricks = [];
 function loadLevel() {
   levels["level" + currentlevel].forEach((level) => {
-    console.log(level.type);
     let temp = new levelBrick(level.x, level.y, level.health, level.type);
     bricks.push(temp);
   });
@@ -31,6 +30,8 @@ function loadLevel() {
 function init() {
   paddle = new Paddle(Math.floor(canvas.width / 8), 10, ctx, canvas, "black");
   ball = new Ball(Math.floor(canvas.width / 64), "red");
+  activePowerups = [];
+  isPowerActive = false;
 }
 // window.addEventListener("resize", () => {
 //   canvas.width = window.innerWidth;
@@ -39,7 +40,7 @@ function init() {
 //   ball = new Ball(Math.floor(canvas.width / 64), "red");
 //   paddle = new Paddle(Math.floor(canvas.width / 8), 10, ctx, canvas, "black");
 // });
-start();
+
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "#111";
@@ -70,7 +71,7 @@ function draw() {
     if (bricks[i].health >= 0) {
       bricks[i].render(ctx);
       if (bricks[i].collisions(ball)) {
-        if (bricks[i].type === "powerup") {
+        if (Math.round(Math.random())) {
           let tempPowerup = new Powerup(10, bricks[i]);
           activePowerups.push(tempPowerup);
         }
@@ -81,20 +82,24 @@ function draw() {
         ball.ySpeed *= -1;
       }
     } else {
-      temp += 1;
+      bricks.splice(i, 1);
+      console.log(bricks.length);
     }
-    if (temp === bricks.length) {
+    if (0 === bricks.length) {
       clearInterval(engine);
+
+      if (currentlevel >= 5) {
+        currentlevel = "winner";
+        start();
+        return;
+      }
       currentlevel += 1;
-      console.log("loading Level");
       start();
     }
   }
   if (ball.changeDirection(paddle, pos)) {
     lives -= 1;
-    console.log(currentUsedPowerUpObject);
 
-    console.log("try");
     clearTimeout(pointerToCurrentTimeout);
     currentUsedPowerUpObject = null;
     init();
@@ -117,18 +122,38 @@ document.addEventListener("mousemove", (e) => {
   pos = e.clientX;
 });
 function start() {
-  if (currentlevel != "gameOver") {
+  init();
+  if (currentlevel > 0 && currentlevel <= 5 && currentlevel !== "gameOver") {
     loadLevel();
-    engine = setInterval(() => {
-      draw();
-    }, 0);
-  } else {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white";
+    ctx.fillText(
+      "Level " + currentlevel,
+      Math.floor(canvas.width / 2) - 25,
+      Math.floor(canvas.height / 2)
+    );
+    setTimeout(() => {
+      engine = setInterval(() => {
+        draw();
+      }, 0);
+    }, 1000);
+  } else if (currentlevel === "gameOver") {
     gameOverSound.play();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#111";
     ctx.fillText(
       "Game Over",
-      Math.floor(canvas.width / 2),
+      Math.floor(canvas.width / 2) - 40,
+      Math.floor(canvas.height / 2)
+    );
+  } else {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white";
+    ctx.fillText(
+      "You Won",
+      Math.floor(canvas.width / 2) - 40,
       Math.floor(canvas.height / 2)
     );
   }
