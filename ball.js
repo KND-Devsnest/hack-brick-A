@@ -13,6 +13,7 @@ class Ball {
     this.y = startPosY;
     this.xSpeed = xSpeed;
     this.ySpeed = ySpeed;
+    this.ballSound = new Audio("assets/ballhitpaddle.wav");
   }
   render(ctx) {
     this.x += this.xSpeed;
@@ -30,9 +31,13 @@ class Ball {
       this.x - this.radius < 0 + this.radius
     ) {
       this.xSpeed = this.xSpeed * -1;
+      this.ballSound.currentTime = 0;
+      this.ballSound.play();
     }
     if (this.y - this.radius < 0 + this.radius) {
       this.ySpeed = this.ySpeed * -1;
+      this.ballSound.currentTime = 0;
+      this.ballSound.play();
     }
     if (
       this.y < paddle.y &&
@@ -42,6 +47,8 @@ class Ball {
       this.ySpeed > 0
     ) {
       this.ySpeed = this.ySpeed * -1;
+      this.ballSound.currentTime = 0;
+      this.ballSound.play();
     }
     if (this.y > canvas.width + this.radius) {
       return 1;

@@ -6,6 +6,7 @@ class Powerup {
     this.y = brick.y;
     this.xSpeed = xSpeed;
     this.ySpeed = ySpeed;
+    this.soundPoweredUp = new Audio("assets/powerup.wav");
   }
   render(ctx) {
     this.x += this.xSpeed;
